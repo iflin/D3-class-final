@@ -105,7 +105,7 @@
             .offset([-10, 0])
             .html(function(d) {
                 return d.Date + "<br/>" + "<strong>查獲數量:</strong> <span style='color:#ff6e6e'>" + d.value + "</span>" + " 隻";
-            })
+            });
 
         var svg = d3.select("body").append("svg")
             .attr("width", width + margin.left + margin.right)
