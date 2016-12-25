@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="utf-8">
+    <title>南美</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://datamaps.github.io/scripts/0.4.4/datamaps.world.min.js"></script>
+
+    <style>
+        .active {
+            fill: blue !important;
+        }
+        /*.datamaps-key dt, .datamaps-key dd {float: none !important;}
+        .datamaps-key {right: -50px; top: 0;}*/
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+    <div id="container2" style="position: relative; width: 100%; height: 60px;"></div>
+
+
+    <script>
+        // 畫出地圖 //
+        var map = new Datamap({
+            element: document.getElementById('container2'),
+
+            // 投影法 //
+            projection: 'equirectangular',
+
+            // 打開響應式功能 //
+            responsive: true,
+
+            // 定義顏色 //
+            fills: {
+                p_two: '#225f55',
+                p_one: '#608b84',
+                zero: '#a8aa9d',
+                n_one: '#d67a82',
+                n_two: 'hsl(355, 39%, 44%)',
+                defaultFill: '#a8aa9d'
+            },
+
+            //給資料//
+            data: {
+                ABW: {
+                    id: "ABW",
+                    cname: "阿路巴",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(2016年起)",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                AFG: {
+                    id: "AFG",
+                    cname: "阿富汗",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑",
+                    anti_d: "-"
+                },
+                AGO: {
+                    id: "AGO",
+                    cname: "安哥拉",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則為罰款或勞改(1886年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                AIA: {
+                    id: "AIA",
+                    cname: "安圭拉",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "-"
+                },
+                ALA: {
+                    id: "ALA",
+                    cname: "奧蘭群島(芬蘭自治區)",
+                    fillKey: "p_two",
+                    marriage: "合法，2017年起",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ALB: {
+                    id: "ALB",
+                    cname: "阿爾巴尼亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1995年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                AND: {
+                    id: "AND",
+                    cname: "安道爾",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(2014年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ARE: {
+                    id: "ARE",
+                    cname: "阿拉伯聯合大公國",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則包含罰款、監禁、驅逐出境",
+                    anti_d: "-"
+                },
+                ARG: {
+                    id: "ARG",
+                    cname: "阿根廷",
+                    fillKey: "p_two",
+                    marriage: "合法，2010年時，制定同性婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                ARM: {
+                    id: "ARM",
+                    cname: "亞美尼亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2003年起)",
+                    anti_d: "-"
+                },
+                ASM: {
+                    id: "ASM",
+                    cname: "美屬薩摩亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1980年起)",
+                    anti_d: "-"
+                },
+                ATG: {
+                    id: "ATG",
+                    cname: "安提瓜和巴布達",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為15年徒刑",
+                    anti_d: "-"
+                },
+                AUS: {
+                    id: "AUS",
+                    cname: "澳大利亞",
+                    fillKey: "p_one",
+                    marriage: "聯邦法律不允許同性婚姻法案(2004年起)",
+                    couple: "同居或民事契約伴侶(2009年起)",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                AUT: {
+                    id: "AUT",
+                    cname: "奧地利",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2010年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                AZE: {
+                    id: "AZE",
+                    cname: "亞塞拜然",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "-"
+                },
+                BDI: {
+                    id: "BDI",
+                    cname: "蒲隆地",
+                    fillKey: "n_one",
+                    marriage: "憲法不允許(2005年起)",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為2年徒刑(2009年起)",
+                    anti_d: "-"
+                },
+                BEL: {
+                    id: "BEL",
+                    cname: "比利時",
+                    fillKey: "p_two",
+                    marriage: "合法，2003年時，修改民法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                BEN: {
+                    id: "BEN",
+                    cname: "貝南",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                BES: {
+                    id: "BES",
+                    cname: "博內爾島，聖尤斯特歇斯和薩巴(荷屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2012年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                BFA: {
+                    id: "BFA",
+                    cname: "布吉納法索",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1991年起)",
+                    couple: "-",
+                    sex_be: "不違法",
+                    anti_d: "-"
+                },
+                BGD: {
+                    id: "BGD",
+                    cname: "孟加拉",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終生監禁",
+                    anti_d: "-"
+                },
+                BGR: {
+                    id: "BGR",
+                    cname: "保加利亞",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1991年起)",
+                    couple: "-",
+                    sex_be: "不違法(1968年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                BHR: {
+                    id: "BHR",
+                    cname: "巴林",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1976年起)",
+                    anti_d: "-"
+                },
+                BHS: {
+                    id: "BHS",
+                    cname: "巴哈馬",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1991年起)",
+                    anti_d: "-"
+                },
+                BIH: {
+                    id: "BIH",
+                    cname: "波希尼亞和赫塞哥維那",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1998年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                BLM: {
+                    id: "BLM",
+                    cname: "聖巴泰勒米",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                BLR: {
+                    id: "BLR",
+                    cname: "白俄羅斯",
+                    fillKey: "zero",
+                    marriage: "憲法不允許",
+                    couple: "-",
+                    sex_be: "不違法(1994年起)",
+                    anti_d: "-"
+                },
+                BLZ: {
+                    id: "BLZ",
+                    cname: "貝里斯",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2016年起)",
+                    anti_d: "-"
+                },
+                BMU: {
+                    id: "BMU",
+                    cname: "百慕達",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1994年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                BOL: {
+                    id: "BOL",
+                    cname: "玻利維亞",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2009年起)",
+                    couple: "-",
+                    sex_be: "不違法",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                BRA: {
+                    id: "BRA",
+                    cname: "巴西",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，國家司法委員會要求行政部門接受同性婚姻登記，因原法律已包含同性婚姻權利。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止所有形式的歧視行為"
+                },
+                BRB: {
+                    id: "BRB",
+                    cname: "巴貝多",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終生監禁",
+                    anti_d: "-"
+                },
+                BRN: {
+                    id: "BRN",
+                    cname: "汶萊",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑",
+                    anti_d: "-"
+                },
+                BTN: {
+                    id: "BTN",
+                    cname: "不丹",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為1年徒刑",
+                    anti_d: "-"
+                },
+                BWA: {
+                    id: "BWA",
+                    cname: "波札那",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為7年徒刑(1885年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                CAF: {
+                    id: "CAF",
+                    cname: "中非共和國",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                CAN: {
+                    id: "CAN",
+                    cname: "加拿大",
+                    fillKey: "p_two",
+                    marriage: "合法，2005年時，制定民事婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CCK: {
+                    id: "CCK",
+                    cname: "科科斯(基林)群島",
+                    fillKey: "p_one",
+                    marriage: "聯邦法律不允許同性婚姻法案(2004年起)",
+                    couple: "可同居或民事契約伴侶(2009年起)",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                CHE: {
+                    id: "CHE",
+                    cname: "瑞士",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2007年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CHL: {
+                    id: "CHL",
+                    cname: "智利",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(2015年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CHN: {
+                    id: "CHN",
+                    cname: "中國",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1997年起)",
+                    anti_d: "-"
+                },
+                CIV: {
+                    id: "CIV",
+                    cname: "象牙海岸",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                CMR: {
+                    id: "CMR",
+                    cname: "喀麥隆",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為5年徒刑(1972年起)",
+                    anti_d: "-"
+                },
+                COD: {
+                    id: "COD",
+                    cname: "剛果民主共和國",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2005年起)",
+                    couple: "-",
+                    sex_be: "不違法",
+                    anti_d: "-"
+                },
+                COG: {
+                    id: "COG",
+                    cname: "剛果",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                COK: {
+                    id: "COK",
+                    cname: "科克群島",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為最重14年徒刑，女性不違法。",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                COL: {
+                    id: "COL",
+                    cname: "哥倫比亞",
+                    fillKey: "p_two",
+                    marriage: "合法，2016年公告，禁止同性婚姻是違憲行為。過去同性伴侶間訂定的契約，也可視為婚姻。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                COM: {
+                    id: "COM",
+                    cname: "科摩洛",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為5年徒刑(1982年起)",
+                    anti_d: "-"
+                },
+                CPV: {
+                    id: "CPV",
+                    cname: "維德角",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2004年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CRI: {
+                    id: "CRI",
+                    cname: "哥斯大黎加",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1971年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CUB: {
+                    id: "CUB",
+                    cname: "古巴",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1976年起)",
+                    couple: "-",
+                    sex_be: "不違法(1979年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CUW: {
+                    id: "CUW",
+                    cname: "古拉索",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                CXR: {
+                    id: "CXR",
+                    cname: "聖誕島",
+                    fillKey: "p_one",
+                    marriage: "聯邦法律不允許同性婚姻法案(2004年起)",
+                    couple: "可同居或民事契約伴侶(2009年起)",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                CYM: {
+                    id: "CYM",
+                    cname: "開曼群島",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2009年起)",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "-"
+                },
+                CYP: {
+                    id: "CYP",
+                    cname: "塞浦路斯",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "通過同志伴侶法(2015年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                CZE: {
+                    id: "CZE",
+                    cname: "捷克",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2006年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                DEU: {
+                    id: "DEU",
+                    cname: "德國",
+                    fillKey: "p_one",
+                    marriage: "憲法不允許同性婚姻",
+                    couple: "可註冊為伴侶(2001年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                DJI: {
+                    id: "DJI",
+                    cname: "吉布地",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                DMA: {
+                    id: "DMA",
+                    cname: "多米尼克",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為10年徒刑，或監禁於精神病院",
+                    anti_d: "-"
+                },
+                DNK: {
+                    id: "DNK",
+                    cname: "丹麥",
+                    fillKey: "p_two",
+                    marriage: "合法，2016年時，制定同性婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                DOM: {
+                    id: "DOM",
+                    cname: "多明尼加共和國",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2010年起)",
+                    couple: "-",
+                    sex_be: "不違法(1822年起)",
+                    anti_d: "-"
+                },
+                DZA: {
+                    id: "DZA",
+                    cname: "阿爾及利亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為2年徒刑(1966年起)",
+                    anti_d: "-"
+                },
+                ECU: {
+                    id: "ECU",
+                    cname: "厄瓜多爾",
+                    fillKey: "p_one",
+                    marriage: "憲法不允許",
+                    couple: "可註冊民事契約伴侶合法(2009年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                EGY: {
+                    id: "EGY",
+                    cname: "埃及",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為17年徒刑，女性不確定。",
+                    anti_d: "-"
+                },
+                ERI: {
+                    id: "ERI",
+                    cname: "厄利垂亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑(1957年起)",
+                    anti_d: "-"
+                },
+                ESP: {
+                    id: "ESP",
+                    cname: "西班牙",
+                    fillKey: "p_two",
+                    marriage: "合法，2005年時，修改民法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                EST: {
+                    id: "EST",
+                    cname: "愛沙尼亞",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可辦理同居(2016年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ETH: {
+                    id: "ETH",
+                    cname: "衣索匹亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為10年以上徒刑",
+                    anti_d: "-"
+                },
+                FIN: {
+                    id: "FIN",
+                    cname: "芬蘭",
+                    fillKey: "p_two",
+                    marriage: "合法，2014年時以公民創制中性婚姻法，同年國會通過法案。2017年時，新法開始運作",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                FJI: {
+                    id: "FJI",
+                    cname: "斐濟",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2010年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                FLK: {
+                    id: "FLK",
+                    cname: "福克蘭群島（馬爾維納斯群島）",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1989年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                FRA: {
+                    id: "FRA",
+                    cname: "法國",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                FRO: {
+                    id: "FRO",
+                    cname: "法羅群島",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1933年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                FSM: {
+                    id: "FSM",
+                    cname: "密克羅尼西亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                GAB: {
+                    id: "GAB",
+                    cname: "加彭",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                GBR: {
+                    id: "GBR",
+                    cname: "英國",
+                    fillKey: "p_two",
+                    marriage: "合法，2014年時，制定新婚姻法。但北愛爾蘭尚未通過。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                GEO: {
+                    id: "GEO",
+                    cname: "喬治亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                GGY: {
+                    id: "GGY",
+                    cname: "根西島(英屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2017年時，制定同性婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                GHA: {
+                    id: "GHA",
+                    cname: "迦納",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為10年以上徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                GIB: {
+                    id: "GIB",
+                    cname: "直布羅陀",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(2014年起)",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                GIN: {
+                    id: "GIN",
+                    cname: "幾內亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑(1988年起)",
+                    anti_d: "-"
+                },
+                GLP: {
+                    id: "GLP",
+                    cname: "瓜德羅普",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                GMB: {
+                    id: "GMB",
+                    cname: "甘比亞",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終生監禁(1888年起)",
+                    anti_d: "-"
+                },
+                GNB: {
+                    id: "GNB",
+                    cname: "幾內亞比索",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1993年起)",
+                    anti_d: "-"
+                },
+                GNQ: {
+                    id: "GNQ",
+                    cname: "赤道幾內亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1968年起)",
+                    anti_d: "-"
+                },
+                GRC: {
+                    id: "GRC",
+                    cname: "希臘",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2015年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                GRD: {
+                    id: "GRD",
+                    cname: "格瑞那達",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為10年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                GRL: {
+                    id: "GRL",
+                    cname: "格陵蘭",
+                    fillKey: "p_two",
+                    marriage: "合法，2016年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                GTM: {
+                    id: "GTM",
+                    cname: "瓜地馬拉",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1800年代起)",
+                    anti_d: "-"
+                },
+                GUF: {
+                    id: "GUF",
+                    cname: "法屬圭亞那",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                GUM: {
+                    id: "GUM",
+                    cname: "關島",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                GUY: {
+                    id: "GUY",
+                    cname: "蓋亞那",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終生監禁",
+                    anti_d: "-"
+                },
+                HKG: {
+                    id: "HKG",
+                    cname: "香港",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1991年起)",
+                    anti_d: "-"
+                },
+                HND: {
+                    id: "HND",
+                    cname: "洪都拉斯",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2005年起)",
+                    couple: "-",
+                    sex_be: "不違法(1899年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                HRV: {
+                    id: "HRV",
+                    cname: "克羅埃西亞",
+                    fillKey: "p_one",
+                    marriage: "憲法不允許(2013年起)",
+                    couple: "可註冊為伴侶(2014年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                HTI: {
+                    id: "HTI",
+                    cname: "海地",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1986年起)",
+                    anti_d: "-"
+                },
+                HUN: {
+                    id: "HUN",
+                    cname: "匈牙利",
+                    fillKey: "p_one",
+                    marriage: "憲法不允許(2012年起)",
+                    couple: "可註冊為伴侶(2009年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                IDN: {
+                    id: "IDN",
+                    cname: "印尼",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "部分區域的穆斯林違法",
+                    anti_d: "-"
+                },
+                IMN: {
+                    id: "IMN",
+                    cname: "曼島(英屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2016年時，制定新婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                IND: {
+                    id: "IND",
+                    cname: "印度",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為10年徒刑(1861年起)",
+                    anti_d: "-"
+                },
+                IRL: {
+                    id: "IRL",
+                    cname: "愛爾蘭",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，以公投修改憲法規定。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                IRN: {
+                    id: "IRN",
+                    cname: "伊朗",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑",
+                    anti_d: "-"
+                },
+                IRQ: {
+                    id: "IRQ",
+                    cname: "伊拉克",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2003年起)",
+                    anti_d: "-"
+                },
+                ISL: {
+                    id: "ISL",
+                    cname: "冰島",
+                    fillKey: "p_two",
+                    marriage: "合法，2006年時，制定婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ISR: {
+                    id: "ISR",
+                    cname: "以色列",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1963年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ITA: {
+                    id: "ITA",
+                    cname: "義大利",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2016年起)",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                JAM: {
+                    id: "JAM",
+                    cname: "牙買加",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為10年勞改，女性不違法。",
+                    anti_d: "-"
+                },
+                JEY: {
+                    id: "JEY",
+                    cname: "澤西",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2012年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                JOR: {
+                    id: "JOR",
+                    cname: "約旦",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1951年起)",
+                    anti_d: "-"
+                },
+                JPN: {
+                    id: "JPN",
+                    cname: "日本",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "部分區域已有同性伴侶法",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                KAZ: {
+                    id: "KAZ",
+                    cname: "哈薩克",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1998年起)",
+                    anti_d: "-"
+                },
+                KEN: {
+                    id: "KEN",
+                    cname: "肯亞",
+                    fillKey: "n_one",
+                    marriage: "憲法不允許(2010年起)",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為14年徒刑(1897年起)",
+                    anti_d: "-"
+                },
+                KGZ: {
+                    id: "KGZ",
+                    cname: "吉爾吉斯",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1998年起)",
+                    anti_d: "-"
+                },
+                KHM: {
+                    id: "KHM",
+                    cname: "柬埔寨",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1993年起)",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                KIR: {
+                    id: "KIR",
+                    cname: "基里巴斯",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為14年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                KNA: {
+                    id: "KNA",
+                    cname: "聖克里斯多福及尼維斯",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為10年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                KOR: {
+                    id: "KOR",
+                    cname: "南韓(韓國)",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                KWT: {
+                    id: "KWT",
+                    cname: "科威特",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為6年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                LAO: {
+                    id: "LAO",
+                    cname: "寮國",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                LBN: {
+                    id: "LBN",
+                    cname: "黎巴嫩",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2014年起)",
+                    anti_d: "-"
+                },
+                LBR: {
+                    id: "LBR",
+                    cname: "賴比瑞亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為1年徒刑(1976年起)",
+                    anti_d: "-"
+                },
+                LBY: {
+                    id: "LBY",
+                    cname: "利比亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為5年徒刑(1973年起)",
+                    anti_d: "-"
+                },
+                LCA: {
+                    id: "LCA",
+                    cname: "聖露西亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為10年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                LIE: {
+                    id: "LIE",
+                    cname: "列支敦士登",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2011年起)",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                LKA: {
+                    id: "LKA",
+                    cname: "斯里蘭卡",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為10年徒刑",
+                    anti_d: "-"
+                },
+                LSO: {
+                    id: "LSO",
+                    cname: "賴索托",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2012年起)",
+                    anti_d: "-"
+                },
+                LTU: {
+                    id: "LTU",
+                    cname: "立陶宛",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1992年起)",
+                    couple: "-",
+                    sex_be: "不違法(1993年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                LUX: {
+                    id: "LUX",
+                    cname: "盧森堡",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                LVA: {
+                    id: "LVA",
+                    cname: "拉脫維亞",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2006年起)",
+                    couple: "-",
+                    sex_be: "不違法(1992年起)",
+                    anti_d: "禁止反同性戀的歧視"
+                },
+                MAF: {
+                    id: "MAF",
+                    cname: "聖馬丁島（法屬）",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                MAR: {
+                    id: "MAR",
+                    cname: "摩洛哥",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑(1962年起)",
+                    anti_d: "-"
+                },
+                MCO: {
+                    id: "MCO",
+                    cname: "摩納哥",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                MDA: {
+                    id: "MDA",
+                    cname: "摩爾多瓦",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1994年起)",
+                    couple: "-",
+                    sex_be: "不違法(1995年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                MDG: {
+                    id: "MDG",
+                    cname: "馬達加斯加",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                MDV: {
+                    id: "MDV",
+                    cname: "馬爾地夫",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為1年徒刑，或30下鞭刑",
+                    anti_d: "-"
+                },
+                MEX: {
+                    id: "MEX",
+                    cname: "墨西哥",
+                    fillKey: "p_one",
+                    marriage: "2010年起，部分地區承認同性婚姻。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                MHL: {
+                    id: "MHL",
+                    cname: "馬紹爾群島",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2005年起)",
+                    anti_d: "-"
+                },
+                MKD: {
+                    id: "MKD",
+                    cname: "馬其頓",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1996年起)",
+                    anti_d: "-"
+                },
+                MLI: {
+                    id: "MLI",
+                    cname: "馬利",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                MLT: {
+                    id: "MLT",
+                    cname: "馬爾他",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(2014年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                MMR: {
+                    id: "MMR",
+                    cname: "緬甸",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終生監禁",
+                    anti_d: "-"
+                },
+                MNE: {
+                    id: "MNE",
+                    cname: "蒙特內哥羅",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2007年起)",
+                    couple: "-",
+                    sex_be: "不違法(1977年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                MNG: {
+                    id: "MNG",
+                    cname: "蒙古",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1961年起)",
+                    anti_d: "-"
+                },
+                MNP: {
+                    id: "MNP",
+                    cname: "北馬里亞納群島(美屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，公告開放同性婚姻申請。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                MOZ: {
+                    id: "MOZ",
+                    cname: "莫三比克",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2015年起)",
+                    anti_d: "禁止一些反同性戀的歧視行為"
+                },
+                MRT: {
+                    id: "MRT",
+                    cname: "茅利塔尼亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則為死刑",
+                    anti_d: "-"
+                },
+                MSR: {
+                    id: "MSR",
+                    cname: "蒙特塞拉特",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2010年起)",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "憲法禁止反同性戀的歧視行為"
+                },
+                MTQ: {
+                    id: "MTQ",
+                    cname: "馬提尼克",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                MUS: {
+                    id: "MUS",
+                    cname: "模里西斯",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為5年徒刑(1838年起)，女性不違法",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                MWI: {
+                    id: "MWI",
+                    cname: "馬拉維",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為14年徒刑(1891年起)",
+                    anti_d: "-"
+                },
+                MYS: {
+                    id: "MYS",
+                    cname: "馬來西亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為20年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                MYT: {
+                    id: "MYT",
+                    cname: "馬約特",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(1999年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                NAM: {
+                    id: "NAM",
+                    cname: "納米比亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法(1920年起)，女性不違法。",
+                    anti_d: "-"
+                },
+                NCL: {
+                    id: "NCL",
+                    cname: "新喀里多尼亞",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                NER: {
+                    id: "NER",
+                    cname: "尼日",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                NFK: {
+                    id: "NFK",
+                    cname: "諾福克島",
+                    fillKey: "p_one",
+                    marriage: "聯邦法律不允許同性婚姻法案(2004年起)",
+                    couple: "可同居或民事契約伴侶(2009年起)",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                NGA: {
+                    id: "NGA",
+                    cname: "奈及利亞",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑(1901年起)",
+                    anti_d: "-"
+                },
+                NIC: {
+                    id: "NIC",
+                    cname: "尼加拉瓜",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2008年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                NIU: {
+                    id: "NIU",
+                    cname: "紐埃",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2007年起)",
+                    anti_d: "-"
+                },
+                NLD: {
+                    id: "NLD",
+                    cname: "荷蘭",
+                    fillKey: "p_two",
+                    marriage: "合法，2000年時，修改婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                NOR: {
+                    id: "NOR",
+                    cname: "挪威",
+                    fillKey: "p_two",
+                    marriage: "合法，2009年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                NPL: {
+                    id: "NPL",
+                    cname: "尼泊爾",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2007年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                NRU: {
+                    id: "NRU",
+                    cname: "諾魯",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2016年起)",
+                    anti_d: "-"
+                },
+                NZL: {
+                    id: "NZL",
+                    cname: "紐西蘭",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                OMN: {
+                    id: "OMN",
+                    cname: "阿曼",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑",
+                    anti_d: "-"
+                },
+                PAK: {
+                    id: "PAK",
+                    cname: "巴基斯坦",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終生監禁",
+                    anti_d: "-"
+                },
+                PAN: {
+                    id: "PAN",
+                    cname: "巴拿馬",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2008年起)",
+                    anti_d: "-"
+                },
+                PCN: {
+                    id: "PCN",
+                    cname: "皮特肯群島(英屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                PER: {
+                    id: "PER",
+                    cname: "秘魯",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1830年代)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                PHL: {
+                    id: "PHL",
+                    cname: "菲律賓",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1933年起)，部分區域的穆斯林除外",
+                    anti_d: "-"
+                },
+                PLW: {
+                    id: "PLW",
+                    cname: "帛琉",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2014年起)",
+                    anti_d: "-"
+                },
+                PNG: {
+                    id: "PNG",
+                    cname: "巴布亞紐幾內亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為14年徒刑，女性不違法。",
+                    anti_d: "-"
+                },
+                POL: {
+                    id: "POL",
+                    cname: "波蘭",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                PRI: {
+                    id: "PRI",
+                    cname: "波多黎各(美屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，公告開放同性婚姻申請。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                PRK: {
+                    id: "PRK",
+                    cname: "北韓(朝鮮)",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                PRT: {
+                    id: "PRT",
+                    cname: "葡萄牙",
+                    fillKey: "p_two",
+                    marriage: "合法，2010年時，制定同性婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                PRY: {
+                    id: "PRY",
+                    cname: "巴拉圭",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1992年起)",
+                    couple: "憲法禁止同性伴侶(1992年起)",
+                    sex_be: "不違法(1880年起)",
+                    anti_d: "-"
+                },
+                PYF: {
+                    id: "PYF",
+                    cname: "法屬玻里尼西亞",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                QAT: {
+                    id: "QAT",
+                    cname: "卡達",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為7年徒刑",
+                    anti_d: "-"
+                },
+                REU: {
+                    id: "REU",
+                    cname: "留尼旺",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "民事契約伴侶(1999年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ROU: {
+                    id: "ROU",
+                    cname: "羅馬尼亞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1996年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                RUS: {
+                    id: "RUS",
+                    cname: "俄羅斯",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1993年起)",
+                    anti_d: "-"
+                },
+                RWA: {
+                    id: "RWA",
+                    cname: "盧安達",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2003年起)",
+                    couple: "-",
+                    sex_be: "不違法(1980年起)",
+                    anti_d: "-"
+                },
+                SAU: {
+                    id: "SAU",
+                    cname: "沙烏地阿拉伯",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑",
+                    anti_d: "-"
+                },
+                SDN: {
+                    id: "SDN",
+                    cname: "蘇丹",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑(1899年起)",
+                    anti_d: "-"
+                },
+                SEN: {
+                    id: "SEN",
+                    cname: "塞內加爾",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為5年徒刑(1966年起)",
+                    anti_d: "-"
+                },
+                SGP: {
+                    id: "SGP",
+                    cname: "新加坡",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為2年徒刑，女性不違法",
+                    anti_d: "-"
+                },
+                SHN: {
+                    id: "SHN",
+                    cname: "達庫尼亞群島(英屬)",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2001年起)",
+                    anti_d: "憲法禁止反同性戀的歧視行為"
+                },
+                SLB: {
+                    id: "SLB",
+                    cname: "索羅門群島",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為14年徒刑",
+                    anti_d: "-"
+                },
+                SLE: {
+                    id: "SLE",
+                    cname: "獅子山",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為終身監禁(1861年起)，女性不違法",
+                    anti_d: "-"
+                },
+                SLV: {
+                    id: "SLV",
+                    cname: "薩爾瓦多",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1800年代起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SMR: {
+                    id: "SMR",
+                    cname: "聖馬利諾",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1865年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                SOM: {
+                    id: "SOM",
+                    cname: "索馬利亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑(1962年起)",
+                    anti_d: "-"
+                },
+                SPM: {
+                    id: "SPM",
+                    cname: "聖皮耶與密克隆群島",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SRB: {
+                    id: "SRB",
+                    cname: "塞爾維亞",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2006年起)",
+                    couple: "-",
+                    sex_be: "不違法",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SSD: {
+                    id: "SSD",
+                    cname: "南蘇丹",
+                    fillKey: "n_one",
+                    marriage: "憲法不允許(2011年起)",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為10年徒刑(1899年起)",
+                    anti_d: "-"
+                },
+                STP: {
+                    id: "STP",
+                    cname: "聖多美普林西比",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2002年起)",
+                    anti_d: "-"
+                },
+                SUR: {
+                    id: "SUR",
+                    cname: "蘇利南",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1869年起)",
+                    anti_d: "-"
+                },
+                SVK: {
+                    id: "SVK",
+                    cname: "斯洛伐克",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2014年起)",
+                    couple: "-",
+                    sex_be: "不違法(1962年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SVN: {
+                    id: "SVN",
+                    cname: "斯洛維尼亞",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "可註冊為伴侶(2006年起)",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SWE: {
+                    id: "SWE",
+                    cname: "瑞典",
+                    fillKey: "p_two",
+                    marriage: "合法，2009年時，制定性別中立婚姻法。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SWZ: {
+                    id: "SWZ",
+                    cname: "史瓦濟蘭",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法(1880年代起)，女性不違法",
+                    anti_d: "-"
+                },
+                SXM: {
+                    id: "SXM",
+                    cname: "聖馬丁島（荷蘭的一部分）",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                SYC: {
+                    id: "SYC",
+                    cname: "塞席爾",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2016年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                SYR: {
+                    id: "SYR",
+                    cname: "敘利亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑",
+                    anti_d: "-"
+                },
+                TCA: {
+                    id: "TCA",
+                    cname: "特克斯和凱科斯群島",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(2011年起)",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "憲法禁止反同性戀的歧視行為"
+                },
+                TCD: {
+                    id: "TCD",
+                    cname: "查德",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                TGO: {
+                    id: "TGO",
+                    cname: "多哥",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑(1884年起)",
+                    anti_d: "-"
+                },
+                THA: {
+                    id: "THA",
+                    cname: "泰國",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1956年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                TJK: {
+                    id: "TJK",
+                    cname: "塔吉克斯坦",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1998年起)",
+                    anti_d: "-"
+                },
+                TKL: {
+                    id: "TKL",
+                    cname: "托克勞",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2007年起)",
+                    anti_d: "-"
+                },
+                TKM: {
+                    id: "TKM",
+                    cname: "土庫曼",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為2年徒刑。女性不違法",
+                    anti_d: "-"
+                },
+                TLS: {
+                    id: "TLS",
+                    cname: "東帝汶",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1975年起)",
+                    anti_d: "-"
+                },
+                TON: {
+                    id: "TON",
+                    cname: "東加",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為10年徒刑。女性不違法",
+                    anti_d: "-"
+                },
+                TTO: {
+                    id: "TTO",
+                    cname: "千里達及托貝哥",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為25年徒刑",
+                    anti_d: "-"
+                },
+                TUN: {
+                    id: "TUN",
+                    cname: "突尼西亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為3年徒刑(1913起)",
+                    anti_d: "-"
+                },
+                TUR: {
+                    id: "TUR",
+                    cname: "土耳其",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1858年起)",
+                    anti_d: "-"
+                },
+                TUV: {
+                    id: "TUV",
+                    cname: "吐瓦魯",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為14年徒刑。女性不違法",
+                    anti_d: "-"
+                },
+                TWN: {
+                    id: "TWN",
+                    cname: "台灣",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(1895年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                TZA: {
+                    id: "TZA",
+                    cname: "坦尚尼亞",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為終身監禁(1899年起)",
+                    anti_d: "-"
+                },
+                UGA: {
+                    id: "UGA",
+                    cname: "烏干達",
+                    fillKey: "n_one",
+                    marriage: "憲法不允許(2005年起)",
+                    couple: "-",
+                    sex_be: "違法，罰則男性最重為14年徒刑，女性最重為7年徒刑(2000年起)",
+                    anti_d: "-"
+                },
+                UKR: {
+                    id: "UKR",
+                    cname: "烏克蘭",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1996年起)",
+                    couple: "-",
+                    sex_be: "不違法(1991年起)",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                URY: {
+                    id: "URY",
+                    cname: "烏拉圭",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                USA: {
+                    id: "USA",
+                    cname: "美國",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年公告，禁止同性婚姻是違憲行為。各州修法或立法方式不同。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "部分州禁止反同性戀的歧視行為"
+                },
+                UZB: {
+                    id: "UZB",
+                    cname: "烏茲別克",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則最重為3年徒刑。女性不違法",
+                    anti_d: "-"
+                },
+                VCT: {
+                    id: "VCT",
+                    cname: "聖文森及格瑞那丁",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為10年徒刑",
+                    anti_d: "-"
+                },
+                VEN: {
+                    id: "VEN",
+                    cname: "委內瑞拉",
+                    fillKey: "zero",
+                    marriage: "憲法不允許(1999年起)",
+                    couple: "-",
+                    sex_be: "不違法(1997年起)",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                VGB: {
+                    id: "VGB",
+                    cname: "維京群島(英屬)",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2000年起)",
+                    anti_d: "憲法禁止反同性戀的歧視行為"
+                },
+                VIR: {
+                    id: "VIR",
+                    cname: "維京群島(美屬)",
+                    fillKey: "p_two",
+                    marriage: "合法，2015年時，公告開放同性婚姻申請。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                VNM: {
+                    id: "VNM",
+                    cname: "越南",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "-"
+                },
+                VUT: {
+                    id: "VUT",
+                    cname: "萬那杜",
+                    fillKey: "zero",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "不違法(2007年起)",
+                    anti_d: "-"
+                },
+                WLF: {
+                    id: "WLF",
+                    cname: "瓦利斯和富圖納群島",
+                    fillKey: "p_two",
+                    marriage: "合法，2013年時，修改原有的相關法律。",
+                    couple: "-",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                WSM: {
+                    id: "WSM",
+                    cname: "薩摩亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "男性違法，罰則為7年徒刑，女性不違法。",
+                    anti_d: "禁止部分反同性戀的歧視行為"
+                },
+                YEM: {
+                    id: "YEM",
+                    cname: "葉門",
+                    fillKey: "n_two",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為死刑",
+                    anti_d: "-"
+                },
+                ZAF: {
+                    id: "ZAF",
+                    cname: "南非",
+                    fillKey: "p_one",
+                    marriage: "-",
+                    couple: "合法，2006年時，制定民事伴侶法。",
+                    sex_be: "-",
+                    anti_d: "禁止反同性戀的歧視行為"
+                },
+                ZMB: {
+                    id: "ZMB",
+                    cname: "尚比亞",
+                    fillKey: "n_one",
+                    marriage: "-",
+                    couple: "-",
+                    sex_be: "違法，罰則最重為14年徒刑(1911起)",
+                    anti_d: "-"
+                },
+                ZWE: {
+                    id: "ZWE",
+                    cname: "辛巴威",
+                    fillKey: "n_one",
+                    marriage: "憲法不允許(2013年起)",
+                    couple: "-",
+                    sex_be: "男性違法(1891年起)，女性不違法",
+                    anti_d: "-"
+                }
+            },
+
+            // Zoom in 到非洲部分 //
+            setProjection: function(element) {
+                var projection = d3.geo.equirectangular()
+                    .center([-56, -18]) // 調整中心位置 //
+                    .rotate([4.4, 0]) // 旋轉地圖 //
+                    .scale(300) // 放大地圖 //
+                    .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+                var path = d3.geo.path()
+                    .projection(projection);
+
+                return {
+                    path: path,
+                    projection: projection
+                };
+            },
+
+            //自訂popup資訊窗//
+            geographyConfig: {
+                popupTemplate: function(geo, data) {
+                    return ['<div class="hoverinfo">',
+
+                        '<span style="font-weight:900;font-size:18px">',
+                        data.cname, // 國家名字 //
+                        '</span>',
+
+                        '<br/>',
+                        '<span style="font-weight:900;font-size:12px">同性婚姻：</span>' +
+                        data.marriage, //選取資料中的一項資料加入//             
+
+                        '<br/>',
+                        '<span style="font-weight:900;font-size:12px">伴侶制度：</span>' + data.couple,
+
+                        '<br/>',
+                        '<span style="font-weight:900;font-size:12px">同性行行為：</span>' + data.sex_be,
+
+//                        '<br/>',
+//                        '<span style="font-weight:900;font-size:12px">反歧視法：</span>' + data.anti_d,
+
+                        '</div>'
+
+                    ].join('');
+                },
+                highlightFillColor: 'null', // handover填充顏色 //     
+                highlightBorderColor: 'rgb(87, 87, 87)', // handover周邊線填充顏色 //
+                highlightBorderWidth: 4, // handover周邊線寬度 //
+
+            }
+        });
+
+        // 響應式 //
+        d3.select(window).on('resize', function() {
+            map.resize();
+        });
+
+    </script>
+
+
+
+
+</body>
+
+</html>
